@@ -4,6 +4,7 @@
 
 *.ctxt
 *.bluej
+doc/
 
 ################
 # Java
