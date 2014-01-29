@@ -48,7 +48,8 @@ public class ClientApp extends JFrame {
         JPanel logPanel = new JPanel();
         Dimension logPanelPos = new Dimension(containerHGap + questionPanel.getWidth() + hGap,
                 containerVGap + timeNScorePanel.getHeight() + vGap);
-        Dimension logPanelSize = new Dimension((int)ClientApp.screenBounds.getWidth() - (int)logPanelPos.getWidth() - containerHGap,
+        Dimension logPanelSize = new Dimension((int)ClientApp.screenBounds.getWidth() -
+                (int)logPanelPos.getWidth() - containerHGap,
                 (int)ClientApp.screenBounds.getHeight() - (int)logPanelPos.getHeight() - containerVGap);
         logPanel.setLayout(new FlowLayout());
         logPanel.setBounds((int) logPanelPos.getWidth(), (int) logPanelPos.getHeight(),
@@ -57,8 +58,10 @@ public class ClientApp extends JFrame {
 
         // Buzzer button
         BuzzerButton buzzer = new BuzzerButton();
-        Dimension buzzerPos = new Dimension(containerHGap, containerVGap + timeNScorePanel.getHeight() + vGap + questionPanel.getHeight() + vGap);
-        Dimension buzzerSize = new Dimension((int)(ClientApp.screenBounds.getWidth() - containerHGap - vGap - logPanel.getWidth() - containerHGap),
+        Dimension buzzerPos = new Dimension(containerHGap,
+                containerVGap + timeNScorePanel.getHeight() + vGap + questionPanel.getHeight() + vGap);
+        Dimension buzzerSize = new Dimension((int)(ClientApp.screenBounds.getWidth() -
+                containerHGap - vGap - logPanel.getWidth() - containerHGap),
                 (int)(ClientApp.screenBounds.getHeight() - buzzerPos.getHeight() - containerVGap));
         buzzer.setBounds((int)buzzerPos.getWidth(), (int)buzzerPos.getHeight(),
                 (int)buzzerSize.getWidth(), (int)buzzerSize.getHeight());
