@@ -3,6 +3,7 @@ package com.github.shkesar.Buzzer;
 import com.github.shkesar.Buzzer.Components.BuzzerButton;
 import com.github.shkesar.Buzzer.Components.CountdownLabel;
 import com.github.shkesar.Buzzer.Components.QuestionPanel;
+import com.github.shkesar.Buzzer.Components.ScoreLabel;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -49,6 +50,7 @@ public class ClientApp extends JFrame {
         CountdownLabel cLabel = new CountdownLabel();
         cLabel.setTime(1000);
         timeNScorePanel.add(cLabel);
+        timeNScorePanel.add(new ScoreLabel());
         cLabel.startCountdown();
 
         // Question Panel
