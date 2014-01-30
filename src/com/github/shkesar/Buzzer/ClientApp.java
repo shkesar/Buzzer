@@ -33,6 +33,8 @@ public class ClientApp extends JFrame {
         this.drawComponents();
     }
 
+    // Currrently using no layout managers.
+    // The widgets are positioned absolutely
     private void drawComponents() {
         this.setLayout(null);
 

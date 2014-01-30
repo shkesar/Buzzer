@@ -40,7 +40,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     public void setButtons() {
         for(int i = 0; i < this.question.getOptions().length; i++) {
-            String optionName = this.question.getOptions()[0];
+            String optionName = this.question.getOptions()[i];
             this.options[i] = new JCheckBox(optionName);
         }
         for(JCheckBox checkBox : options)
