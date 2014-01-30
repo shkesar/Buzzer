@@ -1,4 +1,4 @@
-package com.github.shkesar.Buzzer;
+package com.github.shkesar.Buzzer.Components;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BuzzerButton extends JButton {
-    BuzzerButton() {
+    public BuzzerButton() {
         super();
 
         this.setText("Buzzer");

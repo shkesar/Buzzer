@@ -1,4 +1,6 @@
-package com.github.shkesar.Buzzer;
+package com.github.shkesar.Buzzer.Components;
+
+import com.github.shkesar.Buzzer.Question;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +23,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     private Question question;
 
-    QuestionPanel(Question question) {
+    public QuestionPanel(Question question) {
         super();
 
         this.question = question;
