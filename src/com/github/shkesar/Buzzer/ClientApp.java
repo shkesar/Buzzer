@@ -11,6 +11,11 @@ public class ClientApp extends JFrame {
     static int containerHGap = 5, containerVGap = 5;
     static int hGap = 5, vGap = 5;
 
+    // temp code
+    String[] options = {"Shubham", "Rohit", "Vaibhav"};
+    Question question = new Question("What is the name of the person who created this App?",
+            options);
+
     ClientApp() {
         super();
 
@@ -37,7 +42,7 @@ public class ClientApp extends JFrame {
         timeNScorePanel.setBorder(new EtchedBorder());
 
         // Question Panel
-        JPanel questionPanel = new JPanel();
+        QuestionPanel questionPanel = new QuestionPanel(question);
         questionPanel.setLayout(new FlowLayout());
         Dimension questionBuzzerPanelDimensions = ClientApp.percentOfScreen(0.7, 0.7);
         questionPanel.setBounds(containerHGap, containerVGap + timeNScorePanel.getHeight()+ vGap,
