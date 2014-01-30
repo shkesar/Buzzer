@@ -1,6 +1,7 @@
 package com.github.shkesar.Buzzer;
 
 import com.github.shkesar.Buzzer.Components.BuzzerButton;
+import com.github.shkesar.Buzzer.Components.CountdownLabel;
 import com.github.shkesar.Buzzer.Components.QuestionPanel;
 
 import javax.swing.*;
@@ -45,6 +46,10 @@ public class ClientApp extends JFrame {
         timeNScorePanel.setBounds(containerHGap, containerVGap,
                 (int)timeNScorePanelDimensions.getWidth(), (int)timeNScorePanelDimensions.getHeight());
         timeNScorePanel.setBorder(new EtchedBorder());
+        CountdownLabel cLabel = new CountdownLabel();
+        cLabel.setTime(1000);
+        timeNScorePanel.add(cLabel);
+        cLabel.startCountdown();
 
         // Question Panel
         QuestionPanel questionPanel = new QuestionPanel(question);
