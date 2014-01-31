@@ -11,8 +11,6 @@ public class CountdownLabel extends JLabel {
 
     public CountdownLabel() {
         super("00:00");
-
-        Thread countdownThread = new Thread();
     }
 
     // Starts the time countdown

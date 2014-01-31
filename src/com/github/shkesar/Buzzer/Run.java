@@ -11,7 +11,7 @@ public class Run {
     Run(String args[]) {
         if(args.length == 0)
             frame = new ClientApp();
-        else if(args[0] == "runServer")
+        else if(args[0].equals("runServer"))
             frame = new ServerApp();
 
         frame.setVisible(true);
