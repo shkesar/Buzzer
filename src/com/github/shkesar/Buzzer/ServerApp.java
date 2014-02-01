@@ -12,7 +12,6 @@ import static com.github.shkesar.Buzzer.GUIHelper.*;
 
 /**
  * Server GUI
- * TODO : LogPanel is not visible
  */
 public class ServerApp extends JFrame {
 
@@ -58,12 +57,14 @@ public class ServerApp extends JFrame {
 
         // Log Panel
         logPanel = new LogPanel();
+        logPanel.addEntry("Entry1");
         Dimension logPanelSize = new Dimension((int)questionPanelPreferredSize.getWidth(),
                 (int)(GUIHelper.screenBounds.getHeight() -
                 (2*containerVGap + questionPanelPreferredSize.getHeight() + controlPanel.getHeight() + 2*vGap)));
-        logPanel.setBounds(containerHGap, containerVGap + questionPanel.getWidth() + vGap +
+        logPanel.setBounds(containerHGap, containerVGap + questionPanel.getHeight() + vGap +
                 (int)controlPanel.getHeight() + vGap, (int)logPanelSize.getWidth(), (int)logPanelSize.getHeight());
         logPanel.setBorder(new EtchedBorder());
+        System.out.println(logPanel.getBounds());
 
         this.add(questionPanel);
         this.add(controlPanel);
@@ -75,6 +76,7 @@ public class ServerApp extends JFrame {
         this.setMinimumSize(fullScreenDimension);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setUndecorated(true);
         this.setVisible(true);
     }
 }
