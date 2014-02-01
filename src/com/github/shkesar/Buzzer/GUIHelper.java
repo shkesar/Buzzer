@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class GUIHelper {
 
-    static int containerHGap = 5, containerVGap = 5;
+    static int containerHGap = 8, containerVGap = 10;
     static int hGap = 5, vGap = 5;
 
     static Rectangle screenBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
