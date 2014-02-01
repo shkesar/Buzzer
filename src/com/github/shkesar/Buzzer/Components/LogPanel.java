@@ -19,11 +19,6 @@ public class LogPanel extends JPanel {
         JScrollPane scroll = new JScrollPane(list);
         this.add(scroll, BorderLayout.CENTER);
     }
-    
-    private void reinit() {
-        list = new JList<String>(entries);
-        repaint();
-    }
 
     public void addEntry(String text) {
         entries.add(text);
