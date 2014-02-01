@@ -22,7 +22,9 @@ public class CountdownLabel extends JLabel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 time -= 1;
-                setText(time/60 + ":" + time%60);
+                // prefix time with 0's
+                setText(((time/60 < 10)?"0":"") + time/60 + ":" +
+                        ((time%60 < 10)?"0" : "")+ time%60);
             }
         };
 

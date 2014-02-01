@@ -48,7 +48,7 @@ public class ClientApp extends JFrame {
                 (int)timeNScorePanelDimensions.getWidth(), (int)timeNScorePanelDimensions.getHeight());
         timeNScorePanel.setBorder(new EtchedBorder());
         CountdownLabel cLabel = new CountdownLabel();
-        cLabel.setTime(1000);
+        cLabel.setTime(100);
         timeNScorePanel.add(cLabel, BorderLayout.LINE_START);
         timeNScorePanel.add(new ScoreLabel(), BorderLayout.LINE_END);
         cLabel.startCountdown();
