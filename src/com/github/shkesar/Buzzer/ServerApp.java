@@ -2,6 +2,7 @@ package com.github.shkesar.Buzzer;
 
 import com.github.shkesar.Buzzer.Components.LogPanel;
 import com.github.shkesar.Buzzer.Components.QuestionPanel;
+import com.github.shkesar.Buzzer.Components.RankPanel;
 import com.github.shkesar.Buzzer.DataObjects.Question;
 
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class ServerApp extends JFrame {
     private QuestionPanel questionPanel;
     private JButton prevButton, nextButton, pushQuestionButton;
     private LogPanel logPanel;
+    private RankPanel rankPanel;
 
     // temp code
     String[] options = {"Shubham", "Rohit", "Vaibhav"};
@@ -64,11 +66,21 @@ public class ServerApp extends JFrame {
         logPanel.setBounds(containerHGap, containerVGap + questionPanel.getHeight() + vGap +
                 (int)controlPanel.getHeight() + vGap, (int)logPanelSize.getWidth(), (int)logPanelSize.getHeight());
         logPanel.setBorder(new EtchedBorder());
-        System.out.println(logPanel.getBounds());
+
+        // Rank Panel
+        rankPanel = new RankPanel();
+        Dimension rankPanelPos = new Dimension(containerHGap + (int)questionPanelPreferredSize.getWidth() + vGap,
+                (int)(GUIHelper.screenBounds.getHeight() - rankPanel.getHeight())/2);
+        Dimension rankPanelSize = new Dimension((int)(GUIHelper.screenBounds.getWidth() -
+                (2*containerHGap + questionPanel.getWidth() + hGap)), rankPanel.getHeight());
+        rankPanel.setBounds((int)rankPanelPos.getWidth(), (int)rankPanelPos.getHeight(),
+                (int)rankPanelSize.getWidth(), (int)rankPanelSize.getHeight());
+        rankPanel.setBorder(new EtchedBorder());
 
         this.add(questionPanel);
         this.add(controlPanel);
         this.add(logPanel);
+        this.add(rankPanel);
 
         // Screen initialisation
         Dimension fullScreenDimension = new Dimension((int)GUIHelper.screenBounds.getWidth(),
