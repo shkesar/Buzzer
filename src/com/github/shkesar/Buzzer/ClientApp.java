@@ -14,8 +14,6 @@ public class ClientApp extends JFrame {
     static int containerHGap = 5, containerVGap = 5;
     static int hGap = 5, vGap = 5;
 
-    private static final int HORIZONTAL_SCORE_GAP = (int)screenBounds.getWidth() - 2 * hGap;
-
     // temp code
     String[] options = {"Shubham", "Rohit", "Vaibhav"};
     Question question = new Question("What is the name of the person who created this App?",
@@ -55,7 +53,7 @@ public class ClientApp extends JFrame {
 
         // Question Panel
         QuestionPanel questionPanel = new QuestionPanel(question);
-        Dimension questionBuzzerPanelDimensions = ClientApp.percentOfScreen(0.7, 0.7);
+        Dimension questionBuzzerPanelDimensions = GUIHelper.percentOfScreen(0.7, 0.7);
         questionPanel.setBounds(containerHGap, containerVGap + timeNScorePanel.getHeight()+ vGap,
                 (int)questionBuzzerPanelDimensions.getWidth(), (int)questionBuzzerPanelDimensions.getHeight());
         questionPanel.setBorder(new EtchedBorder());
@@ -86,12 +84,5 @@ public class ClientApp extends JFrame {
         container.add(questionPanel);
         container.add(logPanel);
         container.add(buzzer);
-    }
-
-    public static Dimension percentOfScreen(double percentWidth, double percentHeight) {
-        double width = ClientApp.screenBounds.getWidth() * percentWidth;
-        double height = ClientApp.screenBounds.getHeight() * percentHeight;
-
-        return new Dimension((int)width, (int)height);
     }
 }
