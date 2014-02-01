@@ -1,4 +1,4 @@
-package com.github.shkesar.Buzzer;
+package com.github.shkesar.Buzzer.DataObjects;
 
 public class ClientInfo {
     private String name;

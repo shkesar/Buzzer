@@ -1,6 +1,7 @@
 package com.github.shkesar.Buzzer;
 
 import com.github.shkesar.Buzzer.Components.*;
+import com.github.shkesar.Buzzer.DataObjects.Question;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;

@@ -1,6 +1,6 @@
 package com.github.shkesar.Buzzer.Components;
 
-import com.github.shkesar.Buzzer.Question;
+import com.github.shkesar.Buzzer.DataObjects.Question;
 
 import javax.swing.*;
 import java.awt.*;

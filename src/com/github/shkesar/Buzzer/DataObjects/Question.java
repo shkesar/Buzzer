@@ -1,15 +1,15 @@
-package com.github.shkesar.Buzzer;
+package com.github.shkesar.Buzzer.DataObjects;
 
 public class Question {
     private String text;
     private String[] options;
 
-    Question(String text, String[] options) {
+    public Question(String text, String[] options) {
         this.text = text;
         this.options = options;
     }
 
-    Question() {
+    public Question() {
         this(null, null);
     }
 
