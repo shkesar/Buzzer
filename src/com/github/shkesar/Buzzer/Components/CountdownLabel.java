@@ -1,6 +1,7 @@
 package com.github.shkesar.Buzzer.Components;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,6 +17,7 @@ public class CountdownLabel extends JLabel {
     // Starts the time countdown
     // Use setTime() to set the initial start time
     public void startCountdown() {
+        this.setFont(new Font("Times New Roman", Font.BOLD, 18));
         ActionListener timeDelayer = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -16,6 +16,8 @@ public class ClientApp extends JFrame {
     static int containerHGap = 5, containerVGap = 5;
     static int hGap = 5, vGap = 5;
 
+    private static final int HORIZONTAL_SCORE_GAP = (int)screenBounds.getWidth() - 2 * hGap;
+
     // temp code
     String[] options = {"Shubham", "Rohit", "Vaibhav"};
     Question question = new Question("What is the name of the person who created this App?",
@@ -42,20 +44,19 @@ public class ClientApp extends JFrame {
 
         // Time and Score Panel
         JPanel timeNScorePanel = new JPanel();
-        timeNScorePanel.setLayout(new FlowLayout());
+        timeNScorePanel.setLayout(new BorderLayout());
         Dimension timeNScorePanelDimensions = new Dimension((int)ClientApp.screenBounds.getWidth()-2*containerHGap, 30);
         timeNScorePanel.setBounds(containerHGap, containerVGap,
                 (int)timeNScorePanelDimensions.getWidth(), (int)timeNScorePanelDimensions.getHeight());
         timeNScorePanel.setBorder(new EtchedBorder());
         CountdownLabel cLabel = new CountdownLabel();
         cLabel.setTime(1000);
-        timeNScorePanel.add(cLabel);
-        timeNScorePanel.add(new ScoreLabel());
+        timeNScorePanel.add(cLabel, BorderLayout.LINE_START);
+        timeNScorePanel.add(new ScoreLabel(), BorderLayout.LINE_END);
         cLabel.startCountdown();
 
         // Question Panel
         QuestionPanel questionPanel = new QuestionPanel(question);
-        questionPanel.setLayout(new FlowLayout());
         Dimension questionBuzzerPanelDimensions = ClientApp.percentOfScreen(0.7, 0.7);
         questionPanel.setBounds(containerHGap, containerVGap + timeNScorePanel.getHeight()+ vGap,
                 (int)questionBuzzerPanelDimensions.getWidth(), (int)questionBuzzerPanelDimensions.getHeight());

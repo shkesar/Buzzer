@@ -1,6 +1,7 @@
 package com.github.shkesar.Buzzer.Components;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Represents the Client Score
@@ -12,6 +13,8 @@ public class ScoreLabel extends JLabel {
 
     public ScoreLabel() {
         super("Score : 0");
+
+        this.setFont(new Font("Times New Roman", Font.BOLD, 18));
     }
 
     @Override

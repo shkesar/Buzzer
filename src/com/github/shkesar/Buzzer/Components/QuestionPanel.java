@@ -19,8 +19,6 @@ public class QuestionPanel extends JPanel implements ActionListener {
     // supplied to the Constructor
     private JCheckBox[] options;
 
-    private JButton lockButton = new JButton("Lock");
-
     private Question question;
 
     public QuestionPanel(Question question) {
@@ -28,14 +26,16 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
         this.question = question;
         this.options = new JCheckBox[question.getOptions().length];
-
         this.questionTextLabel.setText(this.question.getText());
-        this.setButtons();
+
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+
+        questionTextLabel.setFont(new Font("Courier", Font.PLAIN, 14));
         this.add(questionTextLabel);
+        this.add(Box.createRigidArea(new Dimension(0, 20)));
+        this.setButtons();
         for(JCheckBox checkBox : this.options)
             this.add(checkBox);
-        this.add(lockButton, BorderLayout.SOUTH);
-        this.lockButton.addActionListener(this);
     }
 
     public void setButtons() {
@@ -53,5 +53,13 @@ public class QuestionPanel extends JPanel implements ActionListener {
         for(JCheckBox checkBox : this.options)
             if(checkBox.isSelected())
                 this.answer = e.getActionCommand();
+    }
+
+    public String getAnswer() {
+        for(JCheckBox option : this.options)
+            if(option.isSelected())
+                return option.getText();
+
+        return null;
     }
 }
