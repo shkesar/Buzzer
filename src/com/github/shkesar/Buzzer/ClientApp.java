@@ -1,9 +1,6 @@
 package com.github.shkesar.Buzzer;
 
-import com.github.shkesar.Buzzer.Components.BuzzerButton;
-import com.github.shkesar.Buzzer.Components.CountdownLabel;
-import com.github.shkesar.Buzzer.Components.QuestionPanel;
-import com.github.shkesar.Buzzer.Components.ScoreLabel;
+import com.github.shkesar.Buzzer.Components.*;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -63,13 +60,12 @@ public class ClientApp extends JFrame {
         questionPanel.setBorder(new EtchedBorder());
 
         // LogPanel
-        JPanel logPanel = new JPanel();
+        LogPanel logPanel = new LogPanel();
         Dimension logPanelPos = new Dimension(containerHGap + questionPanel.getWidth() + hGap,
                 containerVGap + timeNScorePanel.getHeight() + vGap);
         Dimension logPanelSize = new Dimension((int)ClientApp.screenBounds.getWidth() -
                 (int)logPanelPos.getWidth() - containerHGap,
                 (int)ClientApp.screenBounds.getHeight() - (int)logPanelPos.getHeight() - containerVGap);
-        logPanel.setLayout(new FlowLayout());
         logPanel.setBounds((int) logPanelPos.getWidth(), (int) logPanelPos.getHeight(),
                 (int) logPanelSize.getWidth(), (int) logPanelSize.getHeight());
         logPanel.setBorder(new EtchedBorder());
