@@ -20,6 +20,7 @@ public class ServerApp extends JFrame {
     private JButton prevButton, nextButton, pushQuestionButton;
     private LogPanel logPanel;
     private RankPanel rankPanel;
+    private static Question[] questions;
 
     // temp code
     String[] options = {"Shubham", "Rohit", "Vaibhav"};
