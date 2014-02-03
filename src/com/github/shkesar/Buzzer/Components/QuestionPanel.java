@@ -24,6 +24,10 @@ public class QuestionPanel extends JPanel implements ActionListener {
     public QuestionPanel(Question question) {
         super();
 
+        this.setUpQuestion(question);
+    }
+
+    public void setUpQuestion(Question question) {
         this.question = question;
         this.options = new JCheckBox[question.getOptions().length];
         this.questionTextLabel.setText(this.question.getText());
@@ -61,5 +65,9 @@ public class QuestionPanel extends JPanel implements ActionListener {
                 return option.getText();
 
         return null;
+    }
+
+    public Question getQuestion() {
+        return this.question;
     }
 }
