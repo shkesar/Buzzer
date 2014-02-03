@@ -21,6 +21,8 @@ public class CountdownLabel extends JLabel {
         ActionListener timeDelayer = new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(time <= 0)
+                    return;
                 time -= 1;
                 // prefix time with 0's
                 setText(((time/60 < 10)?"0":"") + time/60 + ":" +
