@@ -1,16 +1,33 @@
 package com.github.shkesar.Buzzer;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryonet.Client;
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
 import com.github.shkesar.Buzzer.Components.*;
 import com.github.shkesar.Buzzer.DataObjects.Question;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
+import java.io.IOException;
 
 import static com.github.shkesar.Buzzer.GUIHelper.*;
 
 public class ClientApp extends JFrame {
+
+    // Component members
+    private QuestionPanel questionPanel;
+    private CountdownLabel cLabel;
+    private ScoreLabel scoreLabel;
+
+    // Layout setup code
     Dimension fullscreenDimension = GUIHelper.screenBounds.getSize();
+
+    // Communication code
+    public static String ip = "127.0.0.1";
+    private Client client;
+
     // temp code
     String[] options = {"Shubham", "Rohit", "Vaibhav"};
     Question question = new Question("What is the name of the person who created this App?",
@@ -26,6 +43,34 @@ public class ClientApp extends JFrame {
         this.setUndecorated(true);
 
         this.drawComponents();
+
+        this.setupUpNetworking();
+        this.addListeners();
+    }
+
+    private void setupUpNetworking() {
+        this.client = new Client();
+        this.client.start();
+        try {
+            this.client.connect(5000, ClientApp.ip, 54555, 54777);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        this.client.addListener(new Listener() {
+            @Override
+            public void received(Connection connection, Object o) {
+                if(o instanceof Question){
+                    questionPanel.setUpQuestion((Question)o);
+                }
+            }
+        });
+
+        Kryo kryo = client.getKryo();
+        kryo.register(Question.class);
+    }
+
+    private void addListeners() {
     }
 
     // Currently using no layout managers.
@@ -35,19 +80,19 @@ public class ClientApp extends JFrame {
 
         // Time and Score Panel
         JPanel timeNScorePanel = new JPanel();
+        this.cLabel = new CountdownLabel();
+        this.scoreLabel = new ScoreLabel();
         timeNScorePanel.setLayout(new BorderLayout());
         Dimension timeNScorePanelDimensions = new Dimension((int)GUIHelper.screenBounds.getWidth()-2*containerHGap, 30);
         timeNScorePanel.setBounds(containerHGap, containerVGap,
                 (int)timeNScorePanelDimensions.getWidth(), (int)timeNScorePanelDimensions.getHeight());
         timeNScorePanel.setBorder(new EtchedBorder());
-        CountdownLabel cLabel = new CountdownLabel();
-        cLabel.setTime(100);
-        timeNScorePanel.add(cLabel, BorderLayout.LINE_START);
-        timeNScorePanel.add(new ScoreLabel(), BorderLayout.LINE_END);
-        cLabel.startCountdown();
+        timeNScorePanel.add(this.cLabel, BorderLayout.LINE_START);
+        timeNScorePanel.add(scoreLabel, BorderLayout.LINE_END);
+        this.cLabel.startCountdown();
 
         // Question Panel
-        QuestionPanel questionPanel = new QuestionPanel(question);
+        questionPanel = new QuestionPanel(question);
         Dimension questionBuzzerPanelDimensions = GUIHelper.percentOfScreen(0.7, 0.7);
         questionPanel.setBounds(containerHGap, containerVGap + timeNScorePanel.getHeight()+ vGap,
                 (int)questionBuzzerPanelDimensions.getWidth(), (int)questionBuzzerPanelDimensions.getHeight());

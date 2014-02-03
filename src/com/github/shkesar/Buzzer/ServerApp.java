@@ -1,5 +1,9 @@
 package com.github.shkesar.Buzzer;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryonet.Connection;
+import com.esotericsoftware.kryonet.Listener;
+import com.esotericsoftware.kryonet.Server;
 import com.github.shkesar.Buzzer.Components.LogPanel;
 import com.github.shkesar.Buzzer.Components.QuestionPanel;
 import com.github.shkesar.Buzzer.Components.RankPanel;
@@ -8,6 +12,9 @@ import com.github.shkesar.Buzzer.DataObjects.Question;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import static com.github.shkesar.Buzzer.GUIHelper.*;
 
@@ -16,11 +23,15 @@ import static com.github.shkesar.Buzzer.GUIHelper.*;
  */
 public class ServerApp extends JFrame {
 
+    // Component variables
     private QuestionPanel questionPanel;
     private JButton prevButton, nextButton, pushQuestionButton;
     private LogPanel logPanel;
     private RankPanel rankPanel;
     private static Question[] questions;
+
+    // Communication variables
+    private Server server;
 
     // temp code
     String[] options = {"Shubham", "Rohit", "Vaibhav"};
@@ -31,6 +42,33 @@ public class ServerApp extends JFrame {
         super();
 
         this.addComponents();
+        this.setUpNetworking();
+        this.addListeners();
+    }
+
+    private void addListeners() {
+        this.pushQuestionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                server.sendToAllTCP(questionPanel.getQuestion());
+            }
+        });
+    }
+
+    private void setUpNetworking() {
+        this.server = new Server();
+        this.server.start();
+        try {
+            this.server.bind(54232, 54332);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.server.addListener(new Listener() {
+            public void received(Connection connection, Object o) {
+            }
+        });
+        Kryo kryo = server.getKryo();
+        kryo.register(Question.class);
     }
 
     private void addComponents() {
