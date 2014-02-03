@@ -29,7 +29,8 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     public void setUpQuestion(Question question) {
         this.question = question;
-        this.options = new JCheckBox[question.getOptions().length];
+        if(question.getOptions() != null)
+            this.options = new JCheckBox[question.getOptions().length];
         this.questionTextLabel.setText(this.question.getText());
 
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -38,17 +39,20 @@ public class QuestionPanel extends JPanel implements ActionListener {
         this.add(questionTextLabel);
         this.add(Box.createRigidArea(new Dimension(0, 20)));
         this.setButtons();
-        for(JCheckBox checkBox : this.options)
-            this.add(checkBox);
+        if(this.options != null)
+            for(JCheckBox checkBox : this.options)
+                this.add(checkBox);
     }
 
     public void setButtons() {
-        for(int i = 0; i < this.question.getOptions().length; i++) {
-            String optionName = this.question.getOptions()[i];
-            this.options[i] = new JCheckBox(optionName);
+        if(this.question.getOptions() != null) {
+            for(int i = 0; i < this.question.getOptions().length; i++) {
+                String optionName = this.question.getOptions()[i];
+                this.options[i] = new JCheckBox(optionName);
+            }
+            for(JCheckBox checkBox : options)
+                optionsGroup.add(checkBox);
         }
-        for(JCheckBox checkBox : options)
-            optionsGroup.add(checkBox);
     }
 
     // Called only for the lock button of the QuestionPanel

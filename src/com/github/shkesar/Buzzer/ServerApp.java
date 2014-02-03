@@ -32,11 +32,7 @@ public class ServerApp extends JFrame {
 
     // Communication variables
     private Server server;
-
-    // temp code
-    String[] options = {"Shubham", "Rohit", "Vaibhav"};
-    Question question = new Question("What is the name of the person who created this App?",
-            options);
+    private Question question = new Question("", null);
 
     public ServerApp() {
         super();
@@ -98,7 +94,6 @@ public class ServerApp extends JFrame {
 
         // Log Panel
         logPanel = new LogPanel();
-        logPanel.addEntry("Entry1");
         Dimension logPanelSize = new Dimension((int)questionPanelPreferredSize.getWidth(),
                 (int)(GUIHelper.screenBounds.getHeight() -
                 (2*containerVGap + questionPanelPreferredSize.getHeight() + controlPanel.getHeight() + 2*vGap)));

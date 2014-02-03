@@ -27,11 +27,7 @@ public class ClientApp extends JFrame {
     // Communication code
     public static String ip = "127.0.0.1";
     private Client client;
-
-    // temp code
-    String[] options = {"Shubham", "Rohit", "Vaibhav"};
-    Question question = new Question("What is the name of the person who created this App?",
-            options);
+    private Question question = new Question("", null);
 
     ClientApp() {
         super();
@@ -52,7 +48,7 @@ public class ClientApp extends JFrame {
         this.client = new Client();
         this.client.start();
         try {
-            this.client.connect(5000, ClientApp.ip, 54555, 54777);
+            this.client.connect(5000, ClientApp.ip, 54232, 54332);
         } catch (IOException e) {
             e.printStackTrace();
         }
