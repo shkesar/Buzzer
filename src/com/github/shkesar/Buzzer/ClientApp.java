@@ -7,13 +7,10 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
 
+import static com.github.shkesar.Buzzer.GUIHelper.*;
+
 public class ClientApp extends JFrame {
-    static Rectangle screenBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
-    Dimension fullscreenDimension;
-
-    static int containerHGap = 5, containerVGap = 5;
-    static int hGap = 5, vGap = 5;
-
+    Dimension fullscreenDimension = GUIHelper.screenBounds.getSize();
     // temp code
     String[] options = {"Shubham", "Rohit", "Vaibhav"};
     Question question = new Question("What is the name of the person who created this App?",
@@ -21,8 +18,6 @@ public class ClientApp extends JFrame {
 
     ClientApp() {
         super();
-
-        this.fullscreenDimension = new Dimension((int)screenBounds.getWidth(), (int)screenBounds.getHeight());
 
         this.setAlwaysOnTop(true);
         this.setMinimumSize(fullscreenDimension);
@@ -41,7 +36,7 @@ public class ClientApp extends JFrame {
         // Time and Score Panel
         JPanel timeNScorePanel = new JPanel();
         timeNScorePanel.setLayout(new BorderLayout());
-        Dimension timeNScorePanelDimensions = new Dimension((int)ClientApp.screenBounds.getWidth()-2*containerHGap, 30);
+        Dimension timeNScorePanelDimensions = new Dimension((int)GUIHelper.screenBounds.getWidth()-2*containerHGap, 30);
         timeNScorePanel.setBounds(containerHGap, containerVGap,
                 (int)timeNScorePanelDimensions.getWidth(), (int)timeNScorePanelDimensions.getHeight());
         timeNScorePanel.setBorder(new EtchedBorder());
@@ -62,9 +57,9 @@ public class ClientApp extends JFrame {
         LogPanel logPanel = new LogPanel();
         Dimension logPanelPos = new Dimension(containerHGap + questionPanel.getWidth() + hGap,
                 containerVGap + timeNScorePanel.getHeight() + vGap);
-        Dimension logPanelSize = new Dimension((int)ClientApp.screenBounds.getWidth() -
+        Dimension logPanelSize = new Dimension((int)screenBounds.getWidth() -
                 (int)logPanelPos.getWidth() - containerHGap,
-                (int)ClientApp.screenBounds.getHeight() - (int)logPanelPos.getHeight() - containerVGap);
+                (int)screenBounds.getHeight() - (int)logPanelPos.getHeight() - containerVGap);
         logPanel.setBounds((int) logPanelPos.getWidth(), (int) logPanelPos.getHeight(),
                 (int) logPanelSize.getWidth(), (int) logPanelSize.getHeight());
         logPanel.setBorder(new EtchedBorder());
@@ -73,9 +68,9 @@ public class ClientApp extends JFrame {
         BuzzerButton buzzer = new BuzzerButton();
         Dimension buzzerPos = new Dimension(containerHGap,
                 containerVGap + timeNScorePanel.getHeight() + vGap + questionPanel.getHeight() + vGap);
-        Dimension buzzerSize = new Dimension((int)(ClientApp.screenBounds.getWidth() -
+        Dimension buzzerSize = new Dimension((int)(screenBounds.getWidth() -
                 containerHGap - vGap - logPanel.getWidth() - containerHGap),
-                (int)(ClientApp.screenBounds.getHeight() - buzzerPos.getHeight() - containerVGap));
+                (int)(screenBounds.getHeight() - buzzerPos.getHeight() - containerVGap));
         buzzer.setBounds((int)buzzerPos.getWidth(), (int)buzzerPos.getHeight(),
                 (int)buzzerSize.getWidth(), (int)buzzerSize.getHeight());
 

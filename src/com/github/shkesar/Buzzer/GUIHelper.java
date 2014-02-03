@@ -10,8 +10,8 @@ public class GUIHelper {
     static Rectangle screenBounds = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 
     public static Dimension percentOfScreen(double percentWidth, double percentHeight) {
-        double width = ClientApp.screenBounds.getWidth() * percentWidth;
-        double height = ClientApp.screenBounds.getHeight() * percentHeight;
+        double width = screenBounds.getWidth() * percentWidth;
+        double height = screenBounds.getHeight() * percentHeight;
 
         return new Dimension((int)width, (int)height);
     }
